@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Text, View, Image } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import Home from "./components/home";
 
 export default App = () => {
@@ -23,15 +28,29 @@ export default App = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, padding: 5 }}>
+    <View style={{ flex: 1, padding: 5, backgroundColor: "#C9CACA" }}>
       {isLoading ? (
         <ActivityIndicator size="large" style={{ flex: 1 }} />
       ) : (
         <FlatList
-        showsVerticalScrollIndicator={false}
-          numColumns = {2}
+          style={{ marginTop: 30 }}
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
           data={data}
-          renderItem={({ item }) => <Home image={item.image} title ={item.title} price ={item.price}  rating = {item.rating.rate}/>}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() => {
+                console.log(item.price);
+              }}
+            >
+              <Home
+                image={item.image}
+                title={item.title}
+                price={item.price}
+                rating={item.rating.rate}
+              />
+            </TouchableOpacity>
+          )}
         />
       )}
     </View>

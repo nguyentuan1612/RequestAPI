@@ -24,15 +24,14 @@ const Home = (Props) => {
           justifyContent: "space-between",
           alignItems: "center",
           marginTop: 20,
-          borderWidth: 1,
           height: 30,
         }}
       >
-        <Text>{Props.price}</Text>
+        <Text style={{ color: "red", fontWeight: "bold" }}>{Props.price}</Text>
         <Rating
           ratingCount={5}
           imageSize={13}
-          readonly= {true}
+          readonly={true}
           startingValue={Props.rating}
         />
       </View>
@@ -50,6 +49,9 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     alignItems: "center",
     padding: 6,
+    borderRadius: 7,
+    borderColor: "#8D7F7C",
+    backgroundColor: "white",
   },
   title: {
     fontWeight: "bold",
