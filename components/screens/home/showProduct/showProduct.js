@@ -6,14 +6,17 @@ import {
   ScrollView,
   Image,
   ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 
-const ShowProduct = ({ route }) => {
+const ShowProduct = ({ route, navigation }) => {
   //Get paramaters
-  const { id } = route.params;
+  const { id, image } = route.params;
+
   const [data, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
+
   const callData = async () => {
     try {
       const response = await fetch(
@@ -30,29 +33,125 @@ const ShowProduct = ({ route }) => {
   useEffect(() => {
     callData();
   }, []);
+  const [dataImage, setdataImage] = useState(image);
+
+  const changeImage = (uri) => setdataImage(uri);
 
   return (
     <View style={styles.container}>
-      {isLoading ? (
-        <ActivityIndicator style={{ flex: 1 }} size={"large"} />
-      ) : (
-        <View>
-          <ImageBackground
-            source={{ uri: data.images[1] }}
-            style={{ width: "100%", height: 350 }}
-            resizeMode={"stretch"}
-          >
-            <View style={styles.back}>
-              <Image
-                source={{
-                  uri: "https://cdn-icons-png.flaticon.com/512/2223/2223615.png",
+      <ScrollView>
+        {isLoading ? (
+          <ActivityIndicator size={"large"} />
+        ) : (
+          <View>
+            <ImageBackground
+              source={{ uri: dataImage }}
+              style={{ width: "100%", height: 320 }}
+              resizeMode={"stretch"}
+            >
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <View style={styles.back}>
+                  <Image
+                    source={{
+                      uri: "https://cdn-icons-png.flaticon.com/512/2223/2223615.png",
+                    }}
+                    style={{ width: 20, height: 20 }}
+                  />
+                </View>
+              </TouchableOpacity>
+            </ImageBackground>
+            <View style={styles.body}>
+              <Text style={styles.title}>{data.title}</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
-                style={{ width: 50, height: 50 }}
-              />
+              >
+                <Text style={styles.price}>{"$ " + data.price}</Text>
+                <Image
+                  source={{
+                    uri: "https://cdn-icons-png.flaticon.com/512/8294/8294893.png",
+                  }}
+                  style={{ width: 25, height: 25 }}
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <TouchableOpacity
+                  style={{ width: "31%", height: 110 }}
+                  onPress={() => {
+                    changeImage(data.images[0]);
+                  }}
+                >
+                  <Image
+                    source={{ uri: data.images[0] }}
+                    style={{ width: "100%", height: 110, borderRadius: 8 }}
+                  />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{ width: "31%", height: 110 }}
+                  onPress={() => {
+                    changeImage(data.images[1]);
+                  }}
+                >
+                  <Image
+                    source={{ uri: data.images[1] }}
+                    style={{ width: "100%", height: 110, borderRadius: 8 }}
+                  />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={{ width: "31%", height: 110 }}
+                  onPress={() => {
+                    changeImage(data.images[2]);
+                  }}
+                >
+                  <Image
+                    source={{ uri: data.images[2] }}
+                    style={{ width: "100%", height: 110, borderRadius: 8 }}
+                  />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.title}>Size</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <TouchableOpacity style={{ width: "18%" }}>
+                  <Text style={styles.size}>S</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ width: "18%" }}>
+                  <Text style={styles.size}>m</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ width: "18%" }}>
+                  <Text style={styles.size}>l</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ width: "18%" }}>
+                  <Text style={styles.size}>xl</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ width: "18%" }}>
+                  <Text style={styles.size}>2xl</Text>
+                </TouchableOpacity>
+              </View>
+
+              <Text style={styles.title}>Description</Text>
+              <Text style={styles.description}>{data.description}</Text>
             </View>
-          </ImageBackground>
-        </View>
-      )}
+          </View>
+        )}
+      </ScrollView>
+      <TouchableOpacity>
+        <Text style={styles.buy}>Buy</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -62,11 +161,56 @@ const styles = StyleSheet.create({
   },
 
   back: {
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
     backgroundColor: "white",
     borderRadius: 100,
     margin: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  body: {
+    paddingHorizontal: 20,
+  },
+
+  title: {
+    fontWeight: "bold",
+    fontSize: 18,
+    marginTop: 20,
+  },
+
+  price: {
+    fontWeight: "bold",
+    color: "red",
+    fontSize: 18,
+    marginVertical: 15,
+  },
+
+  size: {
+    marginTop: 15,
+    width: "100%",
+    height: 70,
+    backgroundColor: "#D9D9D9",
+    lineHeight: 70,
+    textAlign: "center",
+    borderRadius: 8,
+    fontWeight: "bold",
+    fontSize: 19,
+  },
+  description: {
+    fontSize: 18,
+    marginTop: 15,
+  },
+  buy: {
+    width: "100%",
+    height: 50,
+    backgroundColor: "#4F4F4F",
+    textAlign: "center",
+    lineHeight: 48,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "white",
   },
 });
 export default ShowProduct;

@@ -44,6 +44,7 @@ const AllProduct = ({ navigation }) => {
                 onPress={() => {
                   navigation.navigate("showProduct", {
                     id: item.id,
+                    image: item.images[1]
                   });
                 }}
               >
