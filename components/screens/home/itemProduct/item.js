@@ -4,9 +4,9 @@ import React from "react";
 const ItemProduct = (Props) => {
   return (
     <View style={styles.container}>
-      <Image source={{uri:"https://cdn.lorem.space/images/fashion/.cache/640x480/wesley-tingey-3mGnYRUNIck-unsplash.jpg" }} style={{width:"100%", height: 160 , borderRadius: 8}}/>
-      <Text style={styles.title} numberOfLines={1}>Namammamams</Text>
-      <Text style={{fontWeight:"bold"}}>33.5</Text>
+      <Image source={{uri:Props.images[1]}} style={{width:"100%", height: 160 , borderRadius: 8}}/>
+      <Text style={styles.title} numberOfLines={1}>{Props.title}</Text>
+      <Text style={{fontWeight:"bold"}}>{"$ "+Props.price}</Text>
     </View>
   );
 };

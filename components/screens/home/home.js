@@ -3,11 +3,11 @@ import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 const Tab = createMaterialTopTabNavigator();
 import { NavigationContainer } from "@react-navigation/native";
-import AllProduct from "./category/allProduct";
 import Clothes from "./category/clothes";
 import Furniture from "./category/furniture";
 import Electronics from "./category/Electronics";
-
+import RootComponents from "./category/allProduct/rootComponents";
+import AllProduct from "./category/allProduct/allProduct";
 const Home = () => {
   return (
     <View style={styles.container}>
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 25,
     paddingHorizontal: 20,
+    backgroundColor: "#EDEDED",
   },
   textHeader: {
     fontWeight: "bold",
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    backgroundColor: "#EDEDED",
   },
 });
 

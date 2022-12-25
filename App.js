@@ -1,54 +1,33 @@
 import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  View,
-  TouchableOpacity,
-  Image,
-  Text,
-} from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-const Tab = createBottomTabNavigator();
+import { View, StatusBar } from "react-native";
+
 import { NavigationContainer } from "@react-navigation/native";
-import Home from "./components/screens/home/home";
-import FavoriteScreen from "./components/screens/favorite/favorite";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import ShowProduct from "./components/screens/home/showProduct/showProduct";
+import AllProduct from "./components/screens/home/category/allProduct/allProduct";
+import RootComponents from "./components/screens/home/category/allProduct/rootComponents";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+const Stack = createNativeStackNavigator();
+
 export default App = () => {
   return (
     <View
       style={{
         flex: 1,
+        backgroundColor: "#EDEDED",
       }}
     >
+      <StatusBar barStyle={"default"} />
       <NavigationContainer>
         {
-          <Tab.Navigator
-            initialRouteName="Home"
-            screenOptions={{
-              headerShown: false,
-              tabBarStyle: { backgroundColor: "#4F4F4F" },
-              tabBarShowLabel: false,
-              tabBarHideOnKeyboard: true
-            }}
+          <Stack.Navigator
+            initialRouteName="rootComponent"
+            screenOptions={{ headerShown: false }}
           >
-            <Tab.Screen
-              name="Home"
-              component={Home}
-              options={{
-                tabBarActiveTintColor: "green",
-                tabBarIcon: ({ color }) => {
-                  return (
-                    <MaterialCommunityIcons
-                      name="home"
-                      size={30}
-                      color={color}
-                    />
-                  );
-                },
-              }}
-            />
-            <Tab.Screen name="Favorite" component={FavoriteScreen} />
-          </Tab.Navigator>
+            <Stack.Screen component={AllProduct} name="allProduct" />
+            <Stack.Screen component={ShowProduct} name="showProduct" />
+            <Stack.Screen component={RootComponents} name="rootComponent" />
+          </Stack.Navigator>
         }
       </NavigationContainer>
     </View>
