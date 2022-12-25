@@ -25,13 +25,9 @@ const Home = () => {
         screenOptions={{
           tabBarLabelStyle: {
             fontWeight: "bold",
-            borderWidth: 1,
-            width:"100%",
-            height:"100%",
           },
           swipeEnabled: false,
           tabBarIndicatorStyle: {
-            width: 30,
             backgroundColor: "red",
           },
           tabBarInactiveTintColor: "black",
@@ -39,7 +35,6 @@ const Home = () => {
           tabBarStyle: {
             backgroundColor: "transparent",
             elevation: 0,
-            borderWidth: 1,
           },
           tabBarScrollEnabled: true,
         }}

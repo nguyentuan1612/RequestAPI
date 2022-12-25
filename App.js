@@ -28,6 +28,7 @@ export default App = () => {
               headerShown: false,
               tabBarStyle: { backgroundColor: "#4F4F4F" },
               tabBarShowLabel: false,
+              tabBarHideOnKeyboard: true
             }}
           >
             <Tab.Screen
