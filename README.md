@@ -1,8 +1,7 @@
-API : https://fakestoreapi.com/products
+API : hhttps://api.escuelajs.co/api/v1/products
 
-![image](https://user-images.githubusercontent.com/104414771/209446269-5ef61104-f5fa-4373-b87b-b67d2fcd1353.png)
-
-
+![image](https://user-images.githubusercontent.com/104414771/209473776-810915fe-1b4c-4862-850a-f80326a73900.png)
+![image](https://user-images.githubusercontent.com/104414771/209473805-b826c9a8-1d6f-47fb-9998-eb61cda17bc3.png)
 Making requests
 In order to fetch content from an arbitrary URL, you can pass the URL to fetch:
 
