@@ -55,7 +55,7 @@ const RootComponents = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EDEDED",
+    backgroundColor: "white",
   },
 });
 export default RootComponents;

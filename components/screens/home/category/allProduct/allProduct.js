@@ -64,8 +64,7 @@ const AllProduct = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
-    backgroundColor: "#EDEDED",
+    backgroundColor: "white",
   },
   input: {
     width: "100%",

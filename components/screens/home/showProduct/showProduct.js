@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     width: "100%",
     height: 70,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "white",
     lineHeight: 70,
     textAlign: "center",
     borderRadius: 8,

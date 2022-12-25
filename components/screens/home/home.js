@@ -2,11 +2,9 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 const Tab = createMaterialTopTabNavigator();
-import { NavigationContainer } from "@react-navigation/native";
 import Clothes from "./category/clothes";
 import Furniture from "./category/furniture";
 import Electronics from "./category/Electronics";
-import RootComponents from "./category/allProduct/rootComponents";
 import AllProduct from "./category/allProduct/allProduct";
 const Home = () => {
   return (
@@ -27,13 +25,14 @@ const Home = () => {
           },
           swipeEnabled: false,
           tabBarIndicatorStyle: {
-            backgroundColor: "red",
+            backgroundColor: "#9775FA",
           },
           tabBarInactiveTintColor: "black",
-          tabBarActiveTintColor: "red",
+          tabBarActiveTintColor: "#9775FA",
           tabBarStyle: {
             backgroundColor: "transparent",
             elevation: 0,
+            marginBottom: 20
           },
           tabBarScrollEnabled: true,
         }}
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 25,
     paddingHorizontal: 20,
-    backgroundColor: "#EDEDED",
+    backgroundColor: "white",
   },
   textHeader: {
     fontWeight: "bold",
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#EDEDED",
+    backgroundColor: "white",
   },
 });
 

@@ -14,7 +14,6 @@ export default App = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "#EDEDED",
       }}
     >
       <StatusBar style="auto" />
