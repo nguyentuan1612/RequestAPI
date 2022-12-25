@@ -4,55 +4,52 @@ import {
   FlatList,
   View,
   TouchableOpacity,
+  Image,
+  Text,
 } from "react-native";
-import Home from "./components/home";
-
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+const Tab = createBottomTabNavigator();
+import { NavigationContainer } from "@react-navigation/native";
+import Home from "./components/screens/home/home";
+import FavoriteScreen from "./components/screens/favorite/favorite";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 export default App = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-
-  const getMovies = async () => {
-    try {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const json = await response.json();
-      setData(json);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
-
   return (
-    <View style={{ flex: 1, padding: 5, backgroundColor: "#C9CACA" }}>
-      {isLoading ? (
-        <ActivityIndicator size="large" style={{ flex: 1 }} />
-      ) : (
-        <FlatList
-          style={{ marginTop: 30 }}
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          data={data}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() => {
-                console.log(item.price);
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
+      <NavigationContainer>
+        {
+          <Tab.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+              headerShown: false,
+              tabBarStyle: { backgroundColor: "#4F4F4F" },
+              tabBarShowLabel: false,
+            }}
+          >
+            <Tab.Screen
+              name="Home"
+              component={Home}
+              options={{
+                tabBarActiveTintColor: "green",
+                tabBarIcon: ({ color }) => {
+                  return (
+                    <MaterialCommunityIcons
+                      name="home"
+                      size={30}
+                      color={color}
+                    />
+                  );
+                },
               }}
-            >
-              <Home
-                image={item.image}
-                title={item.title}
-                price={item.price}
-                rating={item.rating.rate}
-              />
-            </TouchableOpacity>
-          )}
-        />
-      )}
+            />
+            <Tab.Screen name="Favorite" component={FavoriteScreen} />
+          </Tab.Navigator>
+        }
+      </NavigationContainer>
     </View>
   );
 };
