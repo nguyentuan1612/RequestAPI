@@ -17,14 +17,13 @@ const Home = () => {
           source={{
             uri: "https://cdn-icons-png.flaticon.com/512/2832/2832495.png",
           }}
-          style={{ width: 20, height: 20 }}
+          style={{ width: 25, height: 25 }}
         />
       </View>
       <Tab.Navigator
         initialRouteName="All Product"
         screenOptions={{
           tabBarLabelStyle: {
-            fontWeight: "bold",
           },
           swipeEnabled: false,
           tabBarIndicatorStyle: {
@@ -58,6 +57,7 @@ const styles = StyleSheet.create({
   textHeader: {
     fontWeight: "bold",
     fontSize: 15,
+    marginTop: 15
   },
 
   herder: {

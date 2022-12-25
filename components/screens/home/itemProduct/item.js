@@ -6,7 +6,7 @@ const ItemProduct = (Props) => {
     <View style={styles.container}>
       <Image source={{uri:Props.images[1]}} style={{width:"100%", height: 160 , borderRadius: 8}}/>
       <Text style={styles.title} numberOfLines={1}>{Props.title}</Text>
-      <Text style={{fontWeight:"bold"}}>{"$ "+Props.price}</Text>
+      <Text style={{fontWeight:"bold",color:"red"}}>{"$ "+Props.price}</Text>
     </View>
   );
 };

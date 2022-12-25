@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, StatusBar } from "react-native";
+import { View } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import ShowProduct from "./components/screens/home/showProduct/showProduct";
 import AllProduct from "./components/screens/home/category/allProduct/allProduct";
 import RootComponents from "./components/screens/home/category/allProduct/rootComponents";
-
+import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +17,7 @@ export default App = () => {
         backgroundColor: "#EDEDED",
       }}
     >
-      <StatusBar barStyle={"default"} />
+      <StatusBar style="auto" />
       <NavigationContainer>
         {
           <Stack.Navigator

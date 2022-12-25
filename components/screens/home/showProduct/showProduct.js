@@ -34,6 +34,7 @@ const ShowProduct = ({ route, navigation }) => {
     callData();
   }, []);
   const [dataImage, setdataImage] = useState(image);
+  const [flag, setflag] = useState(null);
 
   const changeImage = (uri) => setdataImage(uri);
 
@@ -46,7 +47,7 @@ const ShowProduct = ({ route, navigation }) => {
           <View>
             <ImageBackground
               source={{ uri: dataImage }}
-              style={{ width: "100%", height: 320 }}
+              style={{ width: "100%", height: 350 }}
               resizeMode={"stretch"}
             >
               <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -92,6 +93,7 @@ const ShowProduct = ({ route, navigation }) => {
                   <Image
                     source={{ uri: data.images[0] }}
                     style={{ width: "100%", height: 110, borderRadius: 8 }}
+                    resizeMode="cover"
                   />
                 </TouchableOpacity>
 
@@ -104,6 +106,7 @@ const ShowProduct = ({ route, navigation }) => {
                   <Image
                     source={{ uri: data.images[1] }}
                     style={{ width: "100%", height: 110, borderRadius: 8 }}
+                    resizeMode="cover"
                   />
                 </TouchableOpacity>
 
@@ -116,32 +119,84 @@ const ShowProduct = ({ route, navigation }) => {
                   <Image
                     source={{ uri: data.images[2] }}
                     style={{ width: "100%", height: 110, borderRadius: 8 }}
+                    resizeMode="cover"
                   />
                 </TouchableOpacity>
               </View>
-              <Text style={styles.title}>Size</Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <TouchableOpacity style={{ width: "18%" }}>
-                  <Text style={styles.size}>S</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ width: "18%" }}>
-                  <Text style={styles.size}>m</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ width: "18%" }}>
-                  <Text style={styles.size}>l</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ width: "18%" }}>
-                  <Text style={styles.size}>xl</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ width: "18%" }}>
-                  <Text style={styles.size}>2xl</Text>
-                </TouchableOpacity>
-              </View>
+              {data.category.name !== "Clothes" ? (
+                <Text></Text>
+              ) : (
+                <View>
+                  <Text style={styles.title}>Size</Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <TouchableOpacity
+                      style={{ width: "18%" }}
+                      onPress={() => {
+                        setflag("s");
+                      }}
+                    >
+                      {flag === "s" ? (
+                        <Text style={styles.sizeColor}>s</Text>
+                      ) : (
+                        <Text style={styles.size}>s</Text>
+                      )}
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ width: "18%" }}
+                      onPress={() => {
+                        setflag("m");
+                      }}
+                    >
+                      {flag === "m" ? (
+                        <Text style={styles.sizeColor}>m</Text>
+                      ) : (
+                        <Text style={styles.size}>m</Text>
+                      )}
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ width: "18%" }}
+                      onPress={() => {
+                        setflag("l");
+                      }}
+                    >
+                      {flag === "l" ? (
+                        <Text style={styles.sizeColor}>l</Text>
+                      ) : (
+                        <Text style={styles.size}>l</Text>
+                      )}
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ width: "18%" }}
+                      onPress={() => {
+                        setflag("xl");
+                      }}
+                    >
+                      {flag === "xl" ? (
+                        <Text style={styles.sizeColor}>xl</Text>
+                      ) : (
+                        <Text style={styles.size}>xl</Text>
+                      )}
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ width: "18%" }}
+                      onPress={() => {
+                        setflag("2xl");
+                      }}
+                    >
+                      {flag === "2xl" ? (
+                        <Text style={styles.sizeColor}>2xl</Text>
+                      ) : (
+                        <Text style={styles.size}>2xl</Text>
+                      )}
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              )}
 
               <Text style={styles.title}>Description</Text>
               <Text style={styles.description}>{data.description}</Text>
@@ -150,7 +205,7 @@ const ShowProduct = ({ route, navigation }) => {
         )}
       </ScrollView>
       <TouchableOpacity>
-        <Text style={styles.buy}>Buy</Text>
+        <Text style={styles.buy}>Add to cart</Text>
       </TouchableOpacity>
     </View>
   );
@@ -165,7 +220,8 @@ const styles = StyleSheet.create({
     height: 45,
     backgroundColor: "white",
     borderRadius: 100,
-    margin: 20,
+    marginTop: 30,
+    marginLeft: 20,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -198,6 +254,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 19,
   },
+
+  sizeColor: {
+    marginTop: 15,
+    width: "100%",
+    height: 70,
+    backgroundColor: "#9775FA",
+    color: "white",
+    lineHeight: 70,
+    textAlign: "center",
+    borderRadius: 8,
+    fontWeight: "bold",
+    fontSize: 19,
+  },
   description: {
     fontSize: 18,
     marginTop: 15,
@@ -205,7 +274,7 @@ const styles = StyleSheet.create({
   buy: {
     width: "100%",
     height: 50,
-    backgroundColor: "#4F4F4F",
+    backgroundColor: "#9775FA",
     textAlign: "center",
     lineHeight: 48,
     fontSize: 18,
