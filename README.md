@@ -1,6 +1,6 @@
 API : hhttps://api.escuelajs.co/api/v1/products
 
-![image](https://user-images.githubusercontent.com/104414771/209472414-277353e6-b983-4aff-8b69-0a164c0e5513.png)
+![image](https://user-images.githubusercontent.com/104414771/209473776-810915fe-1b4c-4862-850a-f80326a73900.png)
 ![image](https://user-images.githubusercontent.com/104414771/209472488-8d926f0f-0f9d-4037-a9f7-58fb2fe162fd.png)
 
 Making requests
