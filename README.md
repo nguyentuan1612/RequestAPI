@@ -1,7 +1,7 @@
 API : hhttps://api.escuelajs.co/api/v1/products
 
-![image](https://user-images.githubusercontent.com/104414771/209473776-810915fe-1b4c-4862-850a-f80326a73900.png)
-![image](https://user-images.githubusercontent.com/104414771/209473805-b826c9a8-1d6f-47fb-9998-eb61cda17bc3.png)
+![image](https://user-images.githubusercontent.com/104414771/209476362-b179a078-6078-4f2c-a304-b3e3d41026bc.png)
+![image](https://user-images.githubusercontent.com/104414771/209476374-818d3d9d-cf03-4b6f-bfbd-9bce7ca99eec.png)
 Making requests
 In order to fetch content from an arbitrary URL, you can pass the URL to fetch:
 
