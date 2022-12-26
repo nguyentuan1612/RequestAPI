@@ -30,7 +30,7 @@ const AllProduct = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="Search...." />
+      <TextInput style={styles.input} placeholder="Search...."/>
       {loading ? (
         <ActivityIndicator style={{ flex: 1 }} size="large" />
       ) : (

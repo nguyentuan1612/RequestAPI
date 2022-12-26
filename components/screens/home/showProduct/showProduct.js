@@ -213,15 +213,16 @@ const ShowProduct = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
 
   back: {
-    width: 45,
-    height: 45,
+    width: 35,
+    height: 35,
     backgroundColor: "white",
     borderRadius: 100,
-    marginTop: 30,
-    marginLeft: 20,
+    marginTop: 25,
+    marginLeft: 15,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -247,7 +248,9 @@ const styles = StyleSheet.create({
     marginTop: 15,
     width: "100%",
     height: 70,
-    backgroundColor: "white",
+    backgroundColor: "#F5F6FA",
+    borderWidth: 1,
+    borderColor: "silver",
     lineHeight: 70,
     textAlign: "center",
     borderRadius: 8,

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import {MaterialIcons} from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../../home";
 import FavoriteScreen from "../../../favorite/favorite";
@@ -14,11 +14,17 @@ const RootComponents = () => {
         initialRouteName="Home"
         screenOptions={{
           headerShown: false,
-          tabBarStyle: { backgroundColor: "#9775FA" },
+          tabBarStyle: {
+            backgroundColor: "#9775FA",
+            borderRadius: 20,
+            marginBottom: 7,
+            marginHorizontal: 10,
+          },
+
           tabBarShowLabel: false,
           tabBarHideOnKeyboard: true,
           tabBarActiveTintColor: "#00FF47",
-          tabBarInactiveTintColor:"white"
+          tabBarInactiveTintColor: "white",
         }}
       >
         <Tab.Screen
@@ -26,28 +32,41 @@ const RootComponents = () => {
           component={Home}
           options={{
             tabBarIcon: ({ color }) => {
+              return <MaterialIcons name="home" size={30} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Favorite"
+          component={FavoriteScreen}
+          options={{
+            tabBarIcon: ({ color }) => {
+              return <MaterialIcons name="favorite" size={30} color={color} />;
+            },
+          }}
+        />
+        <Tab.Screen
+          name="CartScreen"
+          component={CartScreen}
+          options={{
+            tabBarIcon: ({ color }) => {
               return (
-                <MaterialIcons name="home" size={30} color={color} />
+                <MaterialIcons name="shopping-cart" size={30} color={color} />
               );
             },
           }}
         />
-        <Tab.Screen name="Favorite" component={FavoriteScreen} options={
-          {tabBarIcon:({color}) =>{
-            return <MaterialIcons name="favorite" size={30} color={color}/>
-          } }
-        } />
-<Tab.Screen name="CartScreen" component={CartScreen} options={
-          {tabBarIcon:({color}) =>{
-            return <MaterialIcons name="shopping-cart" size={30} color={color}/>
-          } }
-        } />
-        <Tab.Screen name="User" component={UserScreen} options={
-          {tabBarIcon:({color}) =>{
-            return <MaterialIcons name="account-circle" size={30} color={color}/>
-          } }
-        } />
-        
+        <Tab.Screen
+          name="User"
+          component={UserScreen}
+          options={{
+            tabBarIcon: ({ color }) => {
+              return (
+                <MaterialIcons name="account-circle" size={30} color={color} />
+              );
+            },
+          }}
+        />
       </Tab.Navigator>
     </View>
   );

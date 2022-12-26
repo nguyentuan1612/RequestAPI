@@ -22,10 +22,13 @@ const Home = () => {
         initialRouteName="All Product"
         screenOptions={{
           tabBarLabelStyle: {
+            fontSize: 12
           },
           swipeEnabled: false,
           tabBarIndicatorStyle: {
             backgroundColor: "#9775FA",
+            width: 50,
+            left: 28
           },
           tabBarInactiveTintColor: "black",
           tabBarActiveTintColor: "#9775FA",
@@ -35,6 +38,10 @@ const Home = () => {
             marginBottom: 20
           },
           tabBarScrollEnabled: true,
+
+          tabBarItemStyle: {
+            width: 107
+          }
         }}
       >
         <Tab.Screen component={AllProduct} name="All Product" />
